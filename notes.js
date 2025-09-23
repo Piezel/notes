@@ -48,6 +48,11 @@ const createNote = (left=100,top=100) => {
         if(isdown) {
             stickyNote.style.top = (e.clientY+offset[1])+'px'
             stickyNote.style.left = (e.clientX+offset[0])+'px'
+            console.log(window.innerHeight)
+            if(Number(stickyNote.style.top.split("px")[0])+stickyNote.clientHeight>window.innerHeight) {
+                let bottomBorder = window.innerHeight-stickyNote.clientHeight-20
+                stickyNote.style.top = bottomBorder+"px"
+            }
         }
     })
     stickyNote.addEventListener("mouseleave",e=>{
